@@ -1,0 +1,21 @@
+Game {
+  Screen: ScreenController
+  init: func
+}
+
+Screen {
+  enter: func
+  exit: func
+  render: func
+  handleInput: func
+}
+
+ScreenController {
+  display: ROT.Display
+  currentScreen: Screen
+  startScreen: Screen
+  playScreen: Screen
+  winScreen: Screen
+  loseScreen: Screen
+}
+
