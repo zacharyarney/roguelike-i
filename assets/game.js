@@ -1,22 +1,34 @@
-window.onload = () => {
-  // create display with dimentions measured in characters
-  const display = new ROT.Display({ width: 80, height: 20 });
-  const container = display.getContainer();
-
-  // add container to out HTML page
-  document.body.appendChild(container);
-
-  let foreground;
-  let background;
-  let colors;
-
-  for (let i = 0; i < 15; i++) {
-    // calculate fore/background colors, getting progressively darker/lighter respectively
-    foreground = ROT.Color.toRGB([255 - i * 20, 255 - i * 20, 255 - i * 20]);
-    background = ROT.Color.toRGB([i * 20, i * 20, i * 20]);
-    // Create the color format specifier
-    colors = `%c{${foreground}}%b{${background}}`;
-    // draw text at column 2, row i
-    display.drawText(2, i, colors + 'Hello, world!');
+class Game {
+  constructor() {
+    this.screen = new ScreenController();
+    this.init();
   }
+
+  init() {
+    console.log('this.screen', this.screen);
+    // helper function for binding to an event and sending it to the screen
+    const game = this; // "so we don't lose 'this'" <= still not sure what this means...
+    const bindEventToScreen = (event) => {
+      window.addEventListener(event, (e) => {
+        // When an event is recieved, send it to the screen if there is one
+        if (game.screen.currentScreen !== null) {
+          game.screen.currentScreen.handleInput(event, e, game.screen);
+        }
+      });
+    };
+    // bind keyboard input events
+    bindEventToScreen('keydown');
+    bindEventToScreen('keyup');
+    bindEventToScreen('keypress');
+  }
+}
+
+window.onload = () => {
+  console.log('i am running i swear');
+  console.log('VK_RETURN', ROT.VK_RETURN);
+  const game = new Game();
+  // add container to out HTML page
+  document.body.appendChild(game.screen.display.getContainer());
+  // load start screen
+  game.screen.switchScreen(game.screen.startScreen);
 };
