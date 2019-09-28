@@ -2,7 +2,7 @@
 // I will fix it later when I have a better idea what I'm doing thank you.
 class ScreenController {
   constructor() {
-    this._display = new ROT.Display({ width: 80, height: 20 });
+    this._display = new ROT.Display({ width: 80, height: 24 });
     this.currentScreen = null;
     this.startScreen = new StartScreen();
     this.playScreen = new PlayScreen();
