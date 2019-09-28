@@ -13,9 +13,9 @@ class PlayScreen {
     if (inputType === 'keydown') {
       // If enter is pressed, go to the win screen
       // If escape is pressed, go to lose screen
-      if (inputData.keyCode === 13 /* ROT.VK_RETURN */ ) {
+      if (inputData.keyCode === ROT.KEYS.VK_RETURN) {
         screenController.switchScreen(screenController.winScreen);
-      } else if (inputData.keyCode === 27 /* ROT.VK_ESCAPE */ ) {
+      } else if (inputData.keyCode === ROT.KEYS.VK_ESCAPE) {
         screenController.switchScreen(screenController.loseScreen);
       }
     }

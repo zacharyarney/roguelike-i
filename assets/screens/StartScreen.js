@@ -16,7 +16,7 @@ class StartScreen {
     console.log('keyCode', inputData.keyCode);
     // When [Enter] is pressed, go to the play screen
     if (inputType === 'keydown') {
-      if (inputData.keyCode === 13 /* ROT.VK_RETURN */ ) {
+      if (inputData.keyCode === ROT.KEYS.VK_RETURN) {
         screenController.switchScreen(screenController.playScreen);
       }
     }
