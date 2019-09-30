@@ -1,6 +1,9 @@
 class Game {
   constructor() {
     this.screen = new ScreenController();
+    this.nullTile = new Tile(new Glyph());
+    this.floorTile = new Tile(new Glyph('.'));
+    this.wallTile = new Tile(new Glyph('#', 'goldenrod'));
     this.init();
   }
 
